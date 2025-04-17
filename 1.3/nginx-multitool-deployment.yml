@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-multitool
+  labels:
+    app: web-debug
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-debug
+  template:
+    metadata:
+      labels:
+        app: web-debug
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+        - name: multitool
+          image: wbitt/network-multitool:latest
+          ports:
+            - containerPort: 8080
+          command: ["sleep", "infinity"]  # Чтобы контейнер не завершал работу
