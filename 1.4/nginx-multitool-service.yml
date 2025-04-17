@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-multitool-service
+  labels:
+    app: web-debug
+spec:
+  type: ClusterIP  # Доступ только внутри кластера
+  selector:
+    app: web-debug  # Совпадает с labels Pod из Deployment
+  ports:
+    - name: http
+      port: 9001      # Порт Service
+      targetPort: 80  # Порт контейнера nginx
+    - name: http-multitools
+      port: 9002      # Порт Service
+      targetPort: 8080  # Порт контейнера multitools
