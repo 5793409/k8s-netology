@@ -1,0 +1,15 @@
+frontend:
+  name: test-stage-nginx
+  replicas: 1
+  image:
+    tag: 1.27.4-bookworm-perl
+  service:
+    enabled: false
+
+backend:
+  name: test-stage-echoserver
+  replicas: 2
+  image:
+    tag: 2.1
+  service:
+    enabled: false

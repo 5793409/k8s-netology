@@ -1,0 +1,15 @@
+frontend:
+  name: dev-stage-nginx
+  replicas: 1
+  image:
+    tag: 1.26-perl
+  service:
+    enabled: false
+
+backend:
+  name: dev-stage-echoserver
+  replicas: 2
+  image:
+    tag: 2.1
+  service:
+    enabled: false
